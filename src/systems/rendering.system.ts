@@ -7,7 +7,7 @@ export class RenderingSystem extends System {
     super();
   }
 
-  update(entities: Entity[], _: number): void {
+  update(entities: Entity[]): void {
     const renderableEntities = entities.filter((entity) => {
       return entity.hasComponent(AnimatedSpriteComponent);
     });
@@ -18,11 +18,9 @@ export class RenderingSystem extends System {
   }
 
   private render(entity: Entity): void {
-    const animatedSprite = entity.getComponent(AnimatedSpriteComponent);
-
-    if (!animatedSprite) {
-      return;
-    }
+    const animatedSprite = entity.getComponent(
+      AnimatedSpriteComponent,
+    ) as AnimatedSpriteComponent;
 
     const sprite = animatedSprite.currentAnimation;
 

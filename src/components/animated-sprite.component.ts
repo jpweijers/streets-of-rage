@@ -35,12 +35,8 @@ export class AnimatedSpriteComponent extends Component {
     return this._elapsedTime;
   }
 
-  updateElapsedTime(deltaTime: number): void {
-    this._elapsedTime += deltaTime;
-  }
-
-  resetElapsedTime(): void {
-    this._elapsedTime = 0;
+  set elapsedTime(value: number) {
+    this._elapsedTime = value;
   }
 
   changeAnimation(key: string): void {
@@ -54,5 +50,6 @@ export class AnimatedSpriteComponent extends Component {
 
     this.key = key;
     this.animations[this.key].currentFrame = 0;
+    this._elapsedTime = 0;
   }
 }

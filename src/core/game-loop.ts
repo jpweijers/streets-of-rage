@@ -1,6 +1,8 @@
 import { PlayerEntity } from "../entities/player.entity";
 import { AnimationSystem } from "../systems/animation.system";
+import { InputSystem } from "../systems/input.system";
 import { RenderingSystem } from "../systems/rendering.system";
+import { Controls } from "./controls";
 import { Engine } from "./engine";
 
 export class GameLoop {
@@ -9,14 +11,15 @@ export class GameLoop {
   private ctx: CanvasRenderingContext2D;
 
   constructor(ctx: CanvasRenderingContext2D) {
-    console.log("GameLoop initialized");
     this.ctx = ctx;
-    console.log(this.ctx);
 
     this.engine.addEntity(new PlayerEntity());
 
     this.engine.addSystem(new RenderingSystem(ctx));
     this.engine.addSystem(new AnimationSystem());
+    this.engine.addSystem(new InputSystem());
+
+    new Controls(this.engine);
   }
 
   loop(time: number = 0): void {

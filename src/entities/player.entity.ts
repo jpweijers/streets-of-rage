@@ -2,32 +2,19 @@ import {
   type AnimatedSprite,
   AnimatedSpriteComponent,
 } from "../components/animated-sprite.component";
+import { InputComponent } from "../components/input.component";
+import { StateComponent } from "../components/state.component";
 import { Entity } from "./entity";
 
-class IdleAnimation {
-  static instance: IdleAnimation | null = null;
-  public image: HTMLImageElement;
+const idle = new Image();
+idle.src = "/idle.png";
 
-  private constructor() {
-    this.image = new Image();
-    this.image.src = "/idle.png";
-  }
-
-  static getInstance(): IdleAnimation {
-    if (!IdleAnimation.instance) {
-      IdleAnimation.instance = new IdleAnimation();
-    }
-    return IdleAnimation.instance;
-  }
-
-  static get image(): HTMLImageElement {
-    return IdleAnimation.getInstance().image;
-  }
-}
+const jab = new Image();
+jab.src = "/jab.png";
 
 const sprites: { [key: string]: AnimatedSprite } = {
   idle: {
-    image: IdleAnimation.image,
+    image: idle,
     frameWidth: 64,
     frameHeight: 64,
     frameCount: 3,
@@ -36,6 +23,16 @@ const sprites: { [key: string]: AnimatedSprite } = {
     anchor: { x: 0.5, y: 0.5 },
     loop: true,
   },
+  jab: {
+    image: jab,
+    frameWidth: 64,
+    frameHeight: 64,
+    frameCount: 1,
+    frameDuration: 60 / 300,
+    currentFrame: 0,
+    anchor: { x: 0.5, y: 0.5 },
+    loop: false,
+  },
 };
 
 export class PlayerEntity extends Entity {
@@ -43,5 +40,7 @@ export class PlayerEntity extends Entity {
     super();
 
     this.addComponent(new AnimatedSpriteComponent(sprites));
+    this.addComponent(new StateComponent("idle"));
+    this.addComponent(new InputComponent());
   }
 }

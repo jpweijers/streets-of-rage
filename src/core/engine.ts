@@ -1,16 +1,23 @@
-export class Engine {
-  private entities: any[] = [];
-  private systems: any[] = [];
+import type { Entity } from "../entities/entity";
+import type { System } from "../systems/system";
 
-  addEntity(entity: any): void {
+export class Engine {
+  private _entities: Entity[] = [];
+  private systems: System[] = [];
+
+  get entities(): Entity[] {
+    return this._entities;
+  }
+
+  addEntity(entity: Entity): void {
     this.entities.push(entity);
   }
 
-  removeEntity(entity: any): void {
-    this.entities = this.entities.filter((e) => e !== entity);
+  removeEntity(entity: Entity): void {
+    this._entities = this.entities.filter((e) => e !== entity);
   }
 
-  addSystem(system: any): void {
+  addSystem(system: System): void {
     this.systems.push(system);
   }
 
