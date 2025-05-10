@@ -2,10 +2,6 @@ export class Engine {
   private entities: any[] = [];
   private systems: any[] = [];
 
-  get entties(): any[] {
-    return this.entities;
-  }
-
   addEntity(entity: any): void {
     this.entities.push(entity);
   }

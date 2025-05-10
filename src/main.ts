@@ -5,7 +5,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `;
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-const ctx = canvas.getContext("webgl2");
+const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+ctx.imageSmoothingEnabled = false;
 
 if (!ctx) {
   throw new Error("WebGL2 not supported");
