@@ -7,10 +7,10 @@ import { StateComponent } from "../components/state.component";
 import { Entity } from "./entity";
 
 const idle = new Image();
-idle.src = "/idle.png";
+idle.src = "/idle-2.png";
 
 const jab = new Image();
-jab.src = "/jab.png";
+jab.src = "/jab-2.png";
 
 const sprites: { [key: string]: AnimatedSprite } = {
   idle: {
@@ -30,7 +30,7 @@ const sprites: { [key: string]: AnimatedSprite } = {
     frameCount: 1,
     frameDuration: 60 / 300,
     currentFrame: 0,
-    anchor: { x: 0.5, y: 0.5 },
+    anchor: { x: 1.2, y: 0.5 },
     loop: false,
   },
 };

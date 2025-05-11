@@ -30,8 +30,8 @@ export class RenderingSystem extends System {
       0,
       sprite.frameWidth,
       sprite.frameHeight,
-      0,
-      0,
+      0 + Math.floor(sprite.anchor.x * sprite.frameWidth),
+      0 + Math.floor(sprite.anchor.y * sprite.frameWidth),
       sprite.frameWidth * 4,
       sprite.frameHeight * 4,
     );
