@@ -12,6 +12,9 @@ idle.src = "/idle-2.png";
 const jab = new Image();
 jab.src = "/jab-2.png";
 
+const uppercut = new Image();
+uppercut.src = "/uppercut-2.png";
+
 const sprites: { [key: string]: AnimatedSprite } = {
   idle: {
     image: idle,
@@ -29,6 +32,16 @@ const sprites: { [key: string]: AnimatedSprite } = {
     frameHeight: 64,
     frameCount: 1,
     frameDuration: 60 / 300,
+    currentFrame: 0,
+    anchor: { x: 1.2, y: 0.5 },
+    loop: false,
+  },
+  uppercut: {
+    image: uppercut,
+    frameWidth: 64,
+    frameHeight: 64,
+    frameCount: 4,
+    frameDuration: 60 / 450,
     currentFrame: 0,
     anchor: { x: 1.2, y: 0.5 },
     loop: false,

@@ -1,6 +1,6 @@
 import { Component } from "./component";
 
-export type StateOption = "idle" | "jab";
+export type StateOption = "idle" | "jab" | "uppercut";
 
 export class StateComponent extends Component {
   private _state: StateOption;

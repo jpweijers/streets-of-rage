@@ -21,6 +21,10 @@ export class InputSystem extends System {
       if (lastKey === "j") {
         state.state = "jab";
       }
+
+      if (lastKey === "u") {
+        state.state = "uppercut";
+      }
     });
   }
 }
